@@ -7,7 +7,7 @@
 
 globals:
   image: &walletImage
-    repository: ghcr.io/adorsys-gis/wallet-vc
+    repository: mbunwevicki100/wallet-vc
     tag: latest
     pullPolicy: Always
 
