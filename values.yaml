@@ -4,5 +4,5 @@ helm:
     value: mbunwevicki100/wallet-vc
     forcestring: true
   - name: image.tag
-    value: v1.0.3
+    value: v1.0.4
     forcestring: true
