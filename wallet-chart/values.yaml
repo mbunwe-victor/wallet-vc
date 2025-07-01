@@ -8,7 +8,7 @@
 globals:
   image: &walletImage
     repository: mbunwevicki100/wallet-vc
-    tag: v1.0.2
+    tag: latest
     pullPolicy: Always
 
   ingressHost: &ingressHost 'demo-wallet.eudi-adorsys.com'
