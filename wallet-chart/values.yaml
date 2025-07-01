@@ -29,9 +29,6 @@ app-template:
   defaultPodOptions:
     imagePullSecrets:
       - name: ghcr-pull-secret
-    volumeMounts:
-      - name: nginx-cache
-        mountPath: /var/cache/nginx
 
   persistence:
     nginx-cache:
@@ -50,6 +47,9 @@ app-template:
             - name: http
               containerPort: 8080
               protocol: TCP
+          volumeMounts:
+          - name: nginx-cache
+            mountPath: /var/cache/nginx
 
 
   service:

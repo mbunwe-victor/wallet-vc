@@ -22,6 +22,10 @@ COPY --from=builder /app/dist /usr/share/nginx/html/
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Fix permissions for nginx cache directory
+USER root
+RUN mkdir -p /var/cache/nginx/client_temp && chmod -R 777 /var/cache/nginx
+
 # Expose port 8080
 EXPOSE 8080
 
