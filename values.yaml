@@ -1,8 +1,0 @@
-helm:
-  parameters:
-  - name: image.name
-    value: mbunwevicki100/wallet-vc
-    forcestring: true
-  - name: image.tag
-    value: v1.0.6
-    forcestring: true
