@@ -47,10 +47,6 @@ app-template:
             - name: http
               containerPort: 8080
               protocol: TCP
-          volumeMounts:
-          - name: nginx-cache
-            mountPath: /var/cache/nginx
-
 
   service:
     app:
