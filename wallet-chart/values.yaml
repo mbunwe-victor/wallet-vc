@@ -8,7 +8,7 @@
 globals:
   image: &walletImage
     repository: ghcr.io/adorsys-gis/wallet-vc
-    tag: v1.0.0
+    tag: latest
     pullPolicy: Always
 
   ingressHost: &ingressHost 'demo-wallet.eudi-adorsys.com'
