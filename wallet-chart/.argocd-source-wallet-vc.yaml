@@ -1,8 +1,8 @@
 helm:
   parameters:
   - name: image.name
-    value: mbunwevicki100/wallet-vc
+    value: ghcr.io/adorsys-gis/wallet-vc
     forcestring: true
   - name: image.tag
-    value: v2.0.0
+    value: v1.0.0
     forcestring: true
