@@ -38,6 +38,9 @@ app-template:
         app:
           nameOverride: demo-wallet-app
           image:
+            repository: ghcr.io/adorsys-gis/wallet-vc
+            tag: latest
+            pullPolicy: Always
           ports:
             - name: http
               containerPort: 8080
