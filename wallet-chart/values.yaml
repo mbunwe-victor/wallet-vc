@@ -6,7 +6,7 @@
 # Reusable anchors
 
 globals:
-  image: 
+  image: &walletImage
     repository: ghcr.io/adorsys-gis/wallet-vc
     tag: latest
     pullPolicy: Always
@@ -37,10 +37,7 @@ app-template:
       containers:
         app:
           nameOverride: demo-wallet-app
-          image:
-            repository: ghcr.io/adorsys-gis/wallet-vc
-            tag: latest
-            pullPolicy: Always
+          image: *walletImage
           ports:
             - name: http
               containerPort: 8080
@@ -76,3 +73,4 @@ app-template:
       tls:
         - secretName: eudi-adorsys-tls
           hosts: *tlsHosts
+          
