@@ -7,5 +7,5 @@ helm:
     value: v1.0.1
     forcestring: true
   - name: globals.image.tag
-    value: develop-latest
+    value: v2.0.0
     forcestring: true
