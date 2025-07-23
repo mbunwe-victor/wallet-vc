@@ -1,0 +1,43 @@
+name: Create PR for Image Updates
+
+on:
+  push:
+    branches:
+      - image-updates
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Create Pull Request using REST API with PAT
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          API_URL="https://api.github.com/repos/${{ github.repository }}/pulls"
+
+          RESPONSE=$(curl -s -H "Authorization: Bearer $GH_PAT" \
+            "$API_URL?head=${{ github.repository_owner }}:image-updates")
+
+          echo "API Response: $RESPONSE"
+
+          PR_EXISTS=$(echo "$RESPONSE" | jq 'if type=="array" and length > 0 then .[0].number else empty end')
+
+          if [ -z "$PR_EXISTS" ]; then
+            echo "Creating pull request..."
+            CREATE_RESPONSE=$(curl -s -X POST "$API_URL" \
+              -H "Authorization: Bearer $GH_PAT" \
+              -H "Content-Type: application/json" \
+              -d '{
+                "title": "Automated image updates",
+                "head": "image-updates",
+                "base": "main",
+                "body": "This PR contains automated updates to image versions."
+              }')
+            echo "Create PR API Response: $CREATE_RESPONSE"
+          else
+            echo "PR already exists: #$PR_EXISTS"
+          fi
