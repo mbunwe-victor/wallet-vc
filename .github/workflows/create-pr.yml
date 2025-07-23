@@ -1,0 +1,22 @@
+name: Create PR for Image Updates
+on:
+  push:
+    branches:
+      - image-updates
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GH_PAT }}
+          base: main
+          head: image-updates
+          title: "Automated image updates"
+          body: "This PR contains automated updates to image versions."
+          delete-branch: false
